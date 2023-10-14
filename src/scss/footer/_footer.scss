@@ -1,0 +1,157 @@
+@use "base/mixins" as m;
+@use "base/variables" as v;
+
+.footer {
+  /* STAR| Para centrar en el zoom-out */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* END| Para centrar en el zoom-out */
+
+  &__container {
+    padding: 175px 30px 0 30px;
+    @media (min-width: 430px) {
+      padding: 175px 60px 0 60px;
+    }
+    @include m.desktop {
+      padding: 175px 135px 0 135px;
+    }
+
+    background-color: #031b34;
+
+    margin-top: 60px;
+    @media (min-width: 900px) {
+      margin-top: 175px;
+    }
+
+    width: 100%;
+  }
+
+  &__header {
+    margin: 0 auto;
+    max-width: 850px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h1 {
+      font-size: 40px;
+      line-height: 55px;
+      @media (min-width: 400px) {
+        font-size: 62px;
+        line-height: 75px;
+      }
+
+      text-align: center;
+      font-weight: 800;
+      letter-spacing: -2.48px;
+
+      background: linear-gradient(90deg, #ae67fa 1.84%, #f49867 102.67%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    button {
+      font-family: Gilroy-Medium;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      color: #fff;
+      background: none;
+      border: 1px solid #fff;
+      padding: 20px;
+
+      margin-top: 60px;
+
+      cursor: pointer;
+    }
+  }
+
+  &__links {
+    padding: 175px 0px 0 0px;
+
+    @media (min-width: 1350px) {
+      padding: 175px 200px 0 200px;
+    }
+    background: #031b34;
+
+    max-width: 1440px;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    @include m.tablet {
+      flex-direction: row;
+    }
+
+    gap: 60px;
+
+    &--img {
+      width: 230px;
+      p {
+        width: 200px;
+
+        font-family: Gilroy-Medium;
+        font-size: 12px;
+        font-weight: 400;
+
+        margin-top: 25px;
+      }
+    }
+
+    &--content {
+      width: 100%;
+
+      display: flex;
+
+      gap: 60px;
+
+      flex-wrap: wrap;
+
+      p {
+        font-family: Gilroy-Bold;
+        font-size: 14px;
+        font-weight: 400;
+
+        margin-bottom: 35px;
+      }
+
+      a {
+        display: block;
+        color: #fff;
+        font-family: Gilroy-Medium;
+        font-size: 12px;
+        font-weight: 400;
+
+        margin-bottom: 25px;
+      }
+    }
+
+    &--link {
+      flex: 1;
+    }
+    &--company {
+      flex: 1;
+    }
+    &--touch {
+      flex: 1;
+      //width: 100px;
+    }
+  }
+
+  &__rights {
+    color: #fff;
+    font-feature-settings: "liga" off;
+    font-family: Gilroy-Medium;
+    font-size: 12px;
+    font-weight: 400;
+
+    margin-bottom: 25px;
+    margin-top: 60px;
+
+    text-align: center;
+  }
+}

@@ -1,0 +1,41 @@
+@use "base/mixins" as m;
+@use "base/variables" as v;
+
+.icons {
+  /* STAR| Para centrar en el zoom-out */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* END| Para centrar en el zoom-out */
+
+  padding: 0 30px;
+  @media (min-width: 430px) {
+    padding: 0 60px;
+  }
+  @include m.desktop {
+    padding: 0 135px;
+  }
+
+  &__container {
+    padding-top: 30px;
+    @media (min-width: 900px) {
+      padding-top: 120px;
+    }
+    max-width: 1170px;
+    width: 100%; // necesario porque el ".icons" es flex, por lo cual, "icons__container" solo tomaría el w que necesita, y no el 100%"
+  }
+
+  &__links {
+    @include m.grid(2, 1fr);
+    justify-items: center;
+    align-items: center;
+    .link:last-child {
+      grid-column: 1/3;
+    }
+    @media (min-width: 630px) {
+      display: flex;
+    }
+    justify-content: center;
+    gap: 45px;
+  }
+}

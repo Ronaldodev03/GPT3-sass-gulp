@@ -1,0 +1,177 @@
+@use "base/variables" as v;
+@use "base/mixins" as m;
+
+.what-is {
+  /* STAR| Para centrar en el zoom-out */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* END| Para centrar en el zoom-out */
+
+  padding: 0 30px;
+  @media (min-width: 430px) {
+    padding: 0 60px;
+  }
+  @include m.desktop {
+    padding: 0 135px;
+  }
+
+  &__container {
+    padding-top: 60px;
+
+    @media (min-width: 900px) {
+      padding-top: 120px;
+    }
+    max-width: 1170px; // OBSERVATION
+    width: 100%; // necesario porque el ".what-is" es flex, por lo cual, ".what-is__container solo tomaría el w que necesita, y no el 100%"
+  }
+
+  &__content {
+    background: #042c54;
+    padding: 30px;
+    @media (min-width: 430px) {
+      padding: 60px;
+    }
+
+    /* STAR| para el gradient */
+    position: relative;
+    z-index: 20; // para que quede arriba del gradient__06
+    overflow: hidden;
+    /* END| para el gradient */
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    @media (min-width: 900px) {
+      flex-direction: row;
+      gap: 35px;
+    }
+    justify-content: space-between;
+    margin-bottom: 90px;
+
+    position: relative; // para la linea que el titulo tiene encima
+
+    /* START| linea encima de titulo */
+    .line {
+      position: absolute;
+      top: 0px;
+      background: linear-gradient(103deg, #ae67fa -13.86%, #f49867 99.55%), #fff;
+      width: 38px;
+      height: 3px;
+    }
+    /* END| linea encima de titulo */
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 65px;
+    letter-spacing: -0.96px;
+    white-space: nowrap;
+  }
+
+  &__p {
+    max-width: 730px;
+    color: #81afdd;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 30px;
+
+    margin-top: 15px; // p ligeramente mas abajo que el title
+  }
+}
+
+.posibilities {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  @media (min-width: 900px) {
+    flex-direction: row;
+    align-items: center;
+  }
+  justify-content: space-between;
+  margin-bottom: 90px;
+
+  h2 {
+    width: 100%;
+    @media (min-width: 900px) {
+      width: 472px;
+    }
+
+    font-size: 24px;
+    line-height: 35px;
+    @media (min-width: 400px) {
+      font-size: 34px;
+      line-height: 45px;
+    }
+    font-weight: 800;
+
+    background: linear-gradient(90deg, #ae67fa 1.84%, #f49867 102.67%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  p {
+    color: #ff8a71;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 30px;
+    margin-top: 35px;
+
+    @media (min-width: 900px) {
+      margin-top: 0;
+    }
+  }
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  @include m.tablet {
+    flex-direction: row;
+    gap: 35px;
+  }
+
+  .card {
+    flex: 1 1 0;
+
+    position: relative; // para la linea que el titulo tiene encima
+
+    /* START| linea encima de titulo */
+    .line {
+      position: absolute;
+      top: 0px;
+      background: linear-gradient(103deg, #ae67fa -13.86%, #f49867 99.55%), #fff;
+      width: 38px;
+      height: 3px;
+    }
+    /* END| linea encima de titulo */
+
+    &__title {
+      font-size: 20px;
+      line-height: 55px;
+      @media (min-width: 400px) {
+        font-size: 24px;
+        line-height: 65px;
+      }
+      font-weight: 800;
+      letter-spacing: -0.96px;
+
+      padding-bottom: 0px;
+      @include m.tablet {
+        padding-bottom: 25px;
+      }
+    }
+
+    &__p {
+      color: #81afdd;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 30px;
+    }
+  }
+}

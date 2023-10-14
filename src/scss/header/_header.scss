@@ -1,0 +1,124 @@
+@use "base/variables" as v;
+@use "base/mixins" as m;
+
+.header {
+  /* STAR| Para centrar en el zoom-out */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* END| Para centrar en el zoom-out */
+
+  cursor: pointer;
+
+  padding: 55px 30px 0 30px;
+  @media (min-width: 430px) {
+    padding: 55px 60px 0 60px;
+  }
+  @include m.desktop {
+    padding: 55px 135px 0 135px;
+  }
+
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.nav__container {
+  max-width: 1170px; // OBSERVATION
+  width: 100%; // necesario porque el ".header" es flex, por lo cual, ".nav__container solo tomaría el w que necesita, y no el 100%"
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__logo {
+    /* STAR| esto debido a los gradients */
+    position: relative;
+    z-index: 10;
+    /* END| esto debido a los gradients */
+    width: 63px;
+    margin-right: 70px;
+  }
+
+  &__links {
+    /* STAR| esto debido a los gradients */
+    position: relative;
+    z-index: 10;
+    /* END| esto debido a los gradients */
+    flex: 1 1 0;
+
+    display: none;
+    @media (min-width: 1230px) {
+      display: flex;
+      gap: 45px;
+    }
+
+    a {
+      color: #fff;
+    }
+  }
+
+  &__log {
+    /* STAR| esto debido a los gradients */
+    position: relative;
+    z-index: 10;
+    /* END| esto debido a los gradients */
+    display: flex;
+    align-items: center;
+    gap: 25px;
+
+    &--in {
+      display: none;
+      @media (min-width: 530px) {
+        display: block;
+      }
+    }
+
+    &--out {
+      /* STAR| esto debido a los gradients */
+      position: relative;
+      z-index: 10;
+      /* END| esto debido a los gradients */
+      cursor: pointer;
+      background: #ff4820;
+      color: #fff;
+      padding: 15px 45px;
+      border-radius: 5px;
+      border: none;
+      display: none;
+      @media (min-width: 530px) {
+        display: block;
+      }
+    }
+  }
+
+  &__buttons {
+    /* STAR| esto debido a los gradients */
+    position: relative;
+    z-index: 10;
+    /* END| esto debido a los gradients */
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    @media (min-width: 1230px) {
+      gap: 0;
+    }
+    a {
+      color: #fff;
+    }
+  }
+
+  &__menu {
+    .menu__open {
+      display: block;
+      @media (min-width: 1230px) {
+        display: none;
+      }
+    }
+
+    .menu__close {
+      display: none;
+    }
+  }
+}

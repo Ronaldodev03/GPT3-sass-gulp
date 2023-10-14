@@ -1,0 +1,225 @@
+@use "base/variables" as v;
+@use "base/mixins" as m;
+
+.hero {
+  /* STAR| Para centrar en el zoom-out */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* END| Para centrar en el zoom-out */
+
+  /* STAR| esto debido a los gradients */
+  position: relative;
+  z-index: 10;
+  /* END| esto debido a los gradients */
+
+  &__container {
+    max-width: 1440px;
+    width: 100%; // necesario porque el ".hero" es flex, por lo cual, ".hero__container" solo tomaría el w que necesita, y no el 100%"
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    @media (min-width: 900px) {
+      flex-direction: row;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding-top: 60px;
+    @media (min-width: 1164px) {
+      padding-top: 120px;
+      display: block;
+    }
+
+    padding-left: 30px;
+    @media (min-width: 430px) {
+      padding-left: 60px;
+    }
+    @include m.desktop {
+      padding-left: 135px;
+    }
+
+    padding-right: 30px;
+    @media (min-width: 430px) {
+      padding-right: 60px;
+    }
+
+    @media (min-width: 900px) {
+      padding-right: 0;
+    }
+
+    flex: 1 1 0;
+
+    h1 {
+      font-size: 40px;
+      line-height: 55px;
+      @media (min-width: 400px) {
+        font-size: 62px;
+        line-height: 75px;
+      }
+      font-weight: 800;
+      letter-spacing: -2.48px;
+
+      background: linear-gradient(90deg, #ae67fa 1.84%, #f49867 102.67%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      margin-bottom: 33px;
+    }
+    p {
+      color: #81afdd;
+      font-size: 20px;
+      font-weight: 400;
+
+      max-width: 100%;
+      @media (min-width: 900px) {
+        max-width: 560px;
+      }
+
+      margin-bottom: 33px;
+    }
+
+    .p_mobile {
+      display: block;
+      @media (min-width: 600px) {
+        display: none;
+      }
+
+      color: #fff;
+      font-size: 12px;
+      font-weight: 500;
+      margin: 20px 0 0 0;
+
+      width: 100%;
+      text-align: left;
+    }
+  }
+
+  &__form {
+    /* STAR| esto debido a los gradients */
+    position: relative;
+    z-index: 10;
+    /* END| esto debido a los gradients */
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    @media (min-width: 530px) {
+      flex-direction: row;
+      gap: 0;
+    }
+    margin-bottom: 38px;
+    width: 100%; // util en mobile version
+    input {
+      flex: 1 1 0;
+      width: 100%;
+
+      background: #052d56;
+      border-radius: 5px;
+      @media (min-width: 530px) {
+        border-radius: 5px 0px 0px 5px;
+      }
+      padding: 20px 25px;
+      @media (min-width: 530px) {
+        padding: 30px 25px;
+      }
+
+      color: #3d6184;
+      font-size: 20px;
+      font-weight: 400;
+
+      border: none;
+      outline: none;
+    }
+
+    button {
+      background: #ff4820;
+      padding: 15px 45px;
+      border-radius: 5px;
+      @media (min-width: 530px) {
+        border-radius: 0px 5px 5px 0px;
+      }
+      border: none;
+      cursor: pointer;
+      color: #fff;
+      font-size: 20px;
+      font-weight: 700;
+    }
+  }
+
+  &__people {
+    display: flex;
+    align-items: center;
+    width: 100%; // util para mobile version
+    gap: 14px;
+    position: relative;
+
+    .people__img {
+      display: flex;
+      cursor: pointer;
+      .img {
+        position: absolute;
+      }
+      .img:nth-child(1) {
+        position: static;
+      }
+      @for $i from 2 through 7 {
+        img:nth-child(#{$i}) {
+          left: calc(#{$i - 1} * #{v.$separacion});
+        }
+      }
+    }
+    .last__img--text {
+      position: absolute;
+      left: 129px;
+      font-size: 8px;
+      color: #000;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .p_desktop {
+      display: none;
+      @media (min-width: 600px) {
+        display: block;
+      }
+
+      color: #fff;
+      font-size: 12px;
+      font-weight: 500;
+      margin: 0; // hay que colocarlo porque el "p" de "&__info" tiene p-[33px] y settea este tambien idk why
+      margin-left: 120px; // las img están en absolute, por eso se necesita
+    }
+  }
+
+  &__img {
+    align-self: center;
+    flex: 1 1 0;
+    width: 100%;
+
+    /* START| alinea la img al centro cuando zoom-in/ mobile */
+    display: flex;
+    justify-content: center;
+    /* END| alinea la img al centro cuando zoom-in/ mobile */
+
+    /* STAR| esto debido a los gradients */
+    position: relative;
+    z-index: 10;
+    /* END| esto debido a los gradients */
+
+    padding: 55px 24px 0 24px;
+    @media (min-width: 900px) {
+      padding: 0 40px 0 0;
+    }
+    @media (min-width: 1440px) {
+      padding: 0 0 0 0;
+    }
+  }
+}
